@@ -25,3 +25,9 @@
 [submodule "vim.lnk/bundle/vim-minibufexpl"]
 	path = vim.lnk/bundle/vim-minibufexpl
 	url = https://github.com/fholgado/minibufexpl.vim.git
+[submodule "vim.lnk/bundle/vim-indent-guides"]
+	path = vim.lnk/bundle/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "vim.lnk/bundle/emmet-vim"]
+	path = vim.lnk/bundle/emmet-vim
+	url = https://github.com/mattn/emmet-vim.git

@@ -187,16 +187,16 @@ nmap <silent> <leader>ln :set relativenumber!<CR>
 " Autocommands
 "------------------------------------------"
 
-" Change the pwd when a buffer is entered instead oi=f autochdir
+    " - Change the pwd when a buffer is entered instead oi=f autochdir
 autocmd BufEnter * silent! lcd %:p:h
 
-" Check the timestamp for update when a buffer is entered
+    " - Check the timestamp for update when a buffer is entered
 autocmd BufEnter,BufWinEnter,CursorHold filename :checktime
 
-" Cause % to match html tags in .HTML,.JSP,.PHP files
+    " - Cause % to match html tags in .HTML,.JSP,.PHP files
 autocmd FileType html,jsp,php set matchpairs+=<:>
 
-" Set filetype association for sass
+    " - Set filetype association for sass
 autocmd BufRead,BufNewFile *.scss set filetype=scss
 
 " NERDTree
