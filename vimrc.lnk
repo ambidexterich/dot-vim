@@ -1,0 +1,265 @@
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+
+    " - Use Vim settings instead of vi
+set nocompatible
+set encoding=utf-8
+
+    " - Build Help
+    " - Load pathogen
+execute pathogen#helptags()
+execute pathogen#infect()
+
+    " - Add a comma as an easy leader
+let mapleader=","
+
+" Environment behavior
+"-----------------------------------------------#
+    " - Ignore matches for tab completions and the such
+set wildignore+=.git
+
+    " - Allow file type specific plugins
+    " - and indentation
+filetype plugin on
+filetype indent on
+
+    " - Allow filetype specific syntax highlight
+syntax on
+
+    " - Allow buffers other than the active one
+set hidden
+
+    " - Allow use of mouse
+set mouse=a
+
+    " - Auto set the pwd
+set autochdir
+
+    " - Auto read changes made outside of vim
+set autoread
+
+    " - The number of commands to remember
+set history=100
+
+    " - The number of undos
+set undolevels=100
+
+    " - Don't allow swap files
+set noswapfile
+set nobackup
+set nowb
+
+" Theme Settings
+"------------------------------------------"
+set background=dark
+color mustang
+
+    " - Force 256 colors
+set t_Co=256
+
+" Visual Control
+" ----------------------------------------------#
+
+    " - Turn off annoying noise
+set visualbell
+
+    " Update the title with the name of the file
+set title
+
+    " - Show the mode you are currently in beneath the cmd
+set showmode
+
+    " - Show possible commands when tab is pressed
+set wildmenu
+
+    " - Show the commands as you type that aren't typed after :
+set showcmd
+
+    " - Show line numbers
+set number
+
+    " - Line numbers should be relative to the current line
+set norelativenumber
+
+    " - Show ruler that displays column and row
+    " - Ignored if airline is used
+set ruler
+
+    " - Highlight the line the cursor is on
+set cursorline
+set cmdheight=4
+set laststatus=2
+
+" Character Formatting
+"-----------------------------------------------#
+    " - Match the previous lines indentation
+set autoindent
+
+    " - Be smart about when to autoindent, such as after {
+set smartindent
+
+    " - Expand tabs to spaces
+set expandtab
+
+    " - Convert tab to this number of spaces
+set softtabstop=4
+
+    " - Make tabs 4 characters wide
+    " - Just in case a tab sneaks in
+set tabstop=4
+
+    " - Set the width when using << or >>
+set shiftwidth=4
+
+    " - Essentially show invisibles
+set nolist
+
+    " - Automatically recognize lists
+set formatoptions+=n
+
+    " - Use these characters in list
+set listchars=trail:·,tab:··,nbsp:☹
+
+    " - Force text to wrap
+    " - On in MacVim but not vim
+set wrap
+
+    " - Break at specific characters not justat what fits
+set linebreak
+
+    " - These are the specific characters
+    " - These are defaults but include them just in case
+set breakat=^I!@*-+;:,./?
+
+" Keyboard Navigation
+"-----------------------------------------------#
+    " - Make BACKSPACE work as expected. Allow backspacing over: line breaks, autoindent, start of insert
+set backspace=indent,eol,start
+
+    " - Allow these motions to wrap at EOL
+set whichwrap+=b,s,<,>,[,],h,l
+
+    " - Make up and down move to the next visible line instead of next logical
+    " - line created from :set wrap
+noremap j gj
+noremap k gk
+
+    " - When moving selected text reselect it after each move
+vnoremap > >gv
+vnoremap < <gv
+
+    " - Prevent the arrow from moving to correct my lazy habit
+nmap <Up> <Nop>
+nmap <Right> <Nop>
+nmap <Down> <Nop>
+nmap <Left> <Nop>
+
+" Search behavior
+"-----------------------------------------------#
+    " - Highlight the searches
+set hlsearch
+
+    " - Highlist as I type
+set incsearch
+
+    " - Ignore case while searching
+set ignorecase
+
+    " - Except when an uppercase is typed
+set smartcase
+
+    " - Allow the search to wrap
+set wrapscan
+
+    " - clear the search with the spacebar
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Key Mappings
+"------------------------------------------"
+    " - Save a file even if didn't open it as root
+cmap w!! w !sudo tee % >/dev/null
+
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nmap <silent> <leader>lc :set list!<CR>
+
+nmap <silent> <leader>ln :set relativenumber!<CR>
+
+" Autocommands
+"------------------------------------------"
+
+" Change the pwd when a buffer is entered instead oi=f autochdir
+autocmd BufEnter * silent! lcd %:p:h
+
+" Check the timestamp for update when a buffer is entered
+autocmd BufEnter,BufWinEnter,CursorHold filename :checktime
+
+" Cause % to match html tags in .HTML,.JSP,.PHP files
+autocmd FileType html,jsp,php set matchpairs+=<:>
+
+" Set filetype association for sass
+autocmd BufRead,BufNewFile *.scss set filetype=scss
+
+" NERDTree
+"------------------------------------------"
+    " - map ,nt to toggle
+nmap <silent> <leader>nt :NERDTreeToggle<CR>
+
+    " - Open NERDTree automatically
+autocmd vimenter * NERDTree
+
+    " - close if NERDTree is the only open buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+let NERDTreeChDirMode=1
+let NERDTreeShowHidden=1
+let NERDTreeShowBookmarks=1
+
+" Fugitive
+"------------------------------------------"
+"noremap <Leader>gs :Gstatus<CR>
+"noremap <Leader>gc :Gcommit<CR>
+"noremap <Leader>ga :Gwrite<CR>
+"noremap <Leader>gl :Glog<CR>
+"noremap <Leader>gd :Gdiff<CR>
+"noremap <Leader>gb :Gblame<CR>
+
+" Ctrl-P
+"------------------------------------------"
+    " - map ctrl-p to plugin
+let g:ctrlp_map = '<c-p>'
+
+    " - run command when ctrl+p is pressed
+let g:ctrlp_cmd = 'CtrlP'
+
+    " - Ignore files in .git folders
+let g:ctrlp_custom_ignore = '\v[\/]\.(git)$'
+
+" Airline
+"------------------------------------------"
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_branch_prefix = '⭠ '
+let g:airline_readonly_symbol = '⭤'
+let g:airline_linecolumn_prefix = '⭡'
+
+" Indent Guide
+"------------------------------------------"
+let g:indent_guides_enable_on_vim_startup=0
+let g:indent_guides_start_level=1
+let g:indent_guides_guide_size=1
+
+" Emmet
+"------------------------------------------"
+let g:user_emmet_leader_key='<C-E>'
+
+" UltiSnip Settings
+" -----------------------------------------"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif

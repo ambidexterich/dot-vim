@@ -1,0 +1,47 @@
+    " - The number of undos
+    " - in gvimrc with assumption system will have more memory
+set undolevels=1000
+
+" UI Chrome Changes
+" ----------------------------------------------#
+    " - Remove the Toolbar
+    " -"
+set guioptions-=T
+
+    " - Remove the silly left scrollbar
+    " -
+set guioptions-=L
+set guioptions-=l
+
+    " - Don't show it during vertical split either
+    " - ala NERDTree
+set guioptions-=R
+
+    " - Don't always show the right scrollbar
+set guioptions-=r
+
+    " - Use console dialogs instead of popups"
+    " -
+set guioptions+=c
+
+    " - Some full screen stuff
+    " -
+set fuoptions=maxhorz,maxvert
+
+" Misc
+" ----------------------------------------------#
+    " - Display a vertical line at 80 characters
+highlight ColorColumn ctermbg=246 guibg=#2d2d2d
+set colorcolumn=80
+    " let &colorcolumn=join(range(81,999),",")
+
+    " - allow F5 to toggle between dark and light if it has that ability
+    " - ex. solarized
+silent! call togglebg#map("<F5>")
+
+    " - Pressing shift and direction highlights text (supposed to)
+let macvim_hig_shift_movement = 1
+
+if filereadable(expand("~/.gvimrc.local"))
+    source ~/.gvimrc.local
+endif
