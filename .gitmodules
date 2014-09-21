@@ -31,3 +31,6 @@
 [submodule "vim.lnk/bundle/emmet-vim"]
 	path = vim.lnk/bundle/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
+[submodule "vim.lnk/bundle/slimv"]
+	path = vim.lnk/bundle/slimv
+	url = https://github.com/kovisoft/slimv.git
