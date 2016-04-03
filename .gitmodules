@@ -37,3 +37,12 @@
 [submodule "vim.lnk/bundle/vim-mirror"]
 	path = vim.lnk/bundle/vim-mirror
 	url = https://github.com/zenbro/mirror.vim.git
+[submodule "vim.lnk/bundle/vim-emmet"]
+	path = vim.lnk/bundle/vim-emmet
+	url = https://github.com/mattn/emmet-vim.git
+[submodule "vim.lnk/bundle/vim-slimv"]
+	path = vim.lnk/bundle/vim-slimv
+	url = https://github.com/kovisoft/slimv.git
+[submodule "vim.lnk/bundle/vim-ultisnips"]
+	path = vim.lnk/bundle/vim-ultisnips
+	url = https://github.com/SirVer/ultisnips.git
