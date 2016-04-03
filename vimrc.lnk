@@ -28,11 +28,14 @@ syntax on
     " - Allow buffers other than the active one
 set hidden
 
+    " - Set the maximum number of tabs allowed
+set tabpagemax=10
+
     " - Allow use of mouse
 set mouse=a
 
     " - Auto set the pwd
-set autochdir
+set noautochdir
 
     " - Auto read changes made outside of vim
 set autoread
@@ -51,7 +54,7 @@ set nowb
 " Theme Settings
 "------------------------------------------"
 set background=dark
-color mustang
+color onedark
 
     " - Force 256 colors
 set t_Co=256
@@ -184,6 +187,9 @@ nmap <silent> <leader>lc :set list!<CR>
 
 nmap <silent> <leader>ln :set relativenumber!<CR>
 
+nmap <S-Enter> O<Esc>j
+nmap <CR> o<Esc>k
+
 " Autocommands
 "------------------------------------------"
 
@@ -205,7 +211,7 @@ autocmd BufRead,BufNewFile *.scss set filetype=scss
 nmap <silent> <leader>nt :NERDTreeToggle<CR>
 
     " - Open NERDTree automatically
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 
     " - close if NERDTree is the only open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -246,7 +252,7 @@ let g:airline_linecolumn_prefix = '⭡'
 
 " Indent Guide
 "------------------------------------------"
-let g:indent_guides_enable_on_vim_startup=0
+let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=1
 let g:indent_guides_guide_size=1
 
