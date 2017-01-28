@@ -1,13 +1,25 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-
     " - Use Vim settings instead of vi
 set nocompatible
 set encoding=utf-8
+filetype off
 
-    " - Build Help
-    " - Load pathogen
-execute pathogen#helptags()
-execute pathogen#infect()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'sirver/ultisnips'
+Plugin 'mattn/emmet-vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'ap/vim-css-color'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'gitignore'
+
+call vundle#end()
 
     " - Add a comma as an easy leader
 let mapleader=","
@@ -238,7 +250,9 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
     " - Ignore files in .git folders
-let g:ctrlp_custom_ignore = '\v[\/]\.(git)$'
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn)$|\v[\/]node_modules$'
+    \ }
 
 " Airline
 "------------------------------------------"
@@ -249,12 +263,6 @@ let g:airline_right_alt_sep = '⮃'
 let g:airline_branch_prefix = '⭠ '
 let g:airline_readonly_symbol = '⭤'
 let g:airline_linecolumn_prefix = '⭡'
-
-" Indent Guide
-"------------------------------------------"
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_start_level=1
-let g:indent_guides_guide_size=1
 
 " Emmet
 "------------------------------------------"
